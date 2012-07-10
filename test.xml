@@ -1,0 +1,75 @@
+<?xml version="1.0" ?>
+<!--
+   - Crazy Bruce Lab
+   - System Configuration File
+   -->
+<CBL>
+
+	<!-- general configuration options -->
+	<Config>
+		<GeometryPath>scene_objects/</GeometryPath>
+		<TwinView>false</TwinView>
+		<FullScreen>false</FullScreen>
+		<DebugWindow>false</DebugWindow>
+	</Config>
+
+	<Resources>
+                <Path>./calibration_data</Path>
+		<Path>./data</Path>
+		<Path>./textures</Path>
+		<Path>./materials</Path>
+		<Path>./shaders</Path>
+                <Path>./modules/wcl/designTest/data</Path>
+	</Resources>
+
+	<!-- Information about the scene -->
+	<Scene>
+	</Scene>
+
+	<Cameras />
+	<Tracking />
+
+	<Modules>
+		<Module name="modules/wcl/designTest/.libs/design_test.so">
+			<Config key="Geometry">data/box.obj</Config>
+                        <Config key="MainTexture">data/blank.png</Config>
+                        <Config key="Textures">data/components</Config>
+                        <Config key="UseTracker">false</Config>
+                        <Config key="Tracker">optitrack.Trackable1</Config>
+                        <Config key="CalibrationMatrix">optitrack.dat</Config>
+                        <Config key="Debug">false</Config>
+		</Module>
+
+                <!-- VRPN Tracker module for use with OptiTrack system -->
+                <!--
+                <Module name="modules/wcl/vrpn/.libs/VRPNTracker.so">
+                        <Config key="Server">192.168.0.118</Config>
+                        <Config key="Tracker">Trackable1</Config>
+                        <Config key="Namespace">optitrack</Config>
+                </Module>
+                -->
+
+                <Module name="modules/wcl/transmitter/.libs/transmitter.so">
+                        <Config key="Port">5092</Config>
+                        <Config key="Type">TCP</Config>
+                        <Config key="Blocking">false</Config>
+                </Module>
+
+	</Modules>
+
+	<InputDevices />
+
+
+	<!-- Defines the layout of cameras and projectors -->
+	<RoomLayout>
+		<ProjectorUnit>
+			<Projector id="0">
+				<Intrinsic>IntMat0.dat</Intrinsic>
+				<Extrinsic>ExtMat0.dat</Extrinsic>
+				<Compensating>0</Compensating>
+                                <Gamma>2.2</Gamma>
+			</Projector>
+		</ProjectorUnit>
+	</RoomLayout>
+
+</CBL>
